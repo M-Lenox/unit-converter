@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+</head>
+<body>
+    <header>
+        <h1>Unit Converter</h1>
+        <nav>
+            <a href="/convert-length">Length</a>
+            <a href="">Weight</a>
+            <a href="">Temperature</a>
+        </nav>
+    </header>
+    <main>
+        <br>
+        <form action="/convert-length" method="POST">
+            <label for="length">Enter the length to convert: </label>
+            <input type="text" id="length" name="length" autocomplete="off" required>
+            <br>
+            <br>
+            
+            <label for="convertFrom"> Unit to Convert from: </label>
+            <!-- <input type="text" name="convertFrom" id="convertFrom" autocomplete="off"> -->
+            <select name="convertFrom" id="convertFrom">
+                <option value="mm">Millimeter</option>
+                <option value="cm">Centimeter</option>
+                <option value="m">Meter</option>
+                <option value="km">Kilometer</option>
+                <option value="ft">Feet</option>
+                <option value="inch">Inch</option>
+                <option value="mile">Mile</option>
+                <option value="yard">Yard</option>
+            </select>
+            <br>
+            <br>
+
+            <label for="convertTo">Unit to Convert to: </label>
+            <select name="convertTo" id="convertTo">
+                <option value="mm">Millimeter</option>
+                <option value="cm">Centimeter</option>
+                <option value="m">Meter</option>
+                <option value="km">Kilometer</option>
+                <option value="ft">Feet</option>
+                <option value="inch">Inch</option>
+                <option value="mile">Mile</option>
+                <option value="yard">Yard</option>
+            </select>
+            <br>
+            <br>
+            <button type="submit">Convert</button>
+        </form>
+    </main>
+    
+</body>
+</html>
