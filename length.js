@@ -43,6 +43,7 @@ app.get("/convert-temperature", (req, res) => {
   res.sendFile(filePathTemperature);
 });
 
+//post route for length
 app.post("/convert-length", (req, res) => {
   const { length, convertFrom, convertTo } = req.body;
   const numericLength = parseFloat(length);
@@ -273,6 +274,7 @@ app.post("/convert-length", (req, res) => {
   );
 });
 
+//post route for weight
 app.post("/convert-weight", (req, res) => {
   const { weight, convertFrom, convertTo } = req.body;
   const numericWeight = parseFloat(weight);
@@ -378,6 +380,7 @@ app.post("/convert-weight", (req, res) => {
   );
 });
 
+//post route for temperature
 app.post("/convert-temperature", (req, res) => {
   const { temperature, convertFrom, convertTo } = req.body;
   const numericTemperature = parseFloat(temperature);
