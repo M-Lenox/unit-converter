@@ -16,31 +16,27 @@
     </header>
     <main>
         <br>
-        <form action="/convert-weight" method="POST">
-            <label for="weight">Enter the weight to convert: </label>
-            <input type="text" id="weight" name="weight" autocomplete="off" required>
+        <form action="/convert-temperature" method="POST">
+            <label for="temperature">Enter the temperature to convert: </label>
+            <input type="text" id="temperature" name="temperature" autocomplete="off" required>
             <br>
             <br>
             
             <label for="convertFrom"> Unit to Convert from: </label>
             <!-- <input type="text" name="convertFrom" id="convertFrom" autocomplete="off"> -->
             <select name="convertFrom" id="convertFrom">
-                <option value="mg">Milligram</option>
-                <option value="g">gram</option>
-                <option value="kg">Kilogram</option>
-                <option value="ounce">Ounce</option>
-                <option value="pound">Pound</option>
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+                <option value="celcius">Celcius</option>
             </select>
             <br>
             <br>
 
             <label for="convertTo">Unit to Convert to: </label>
             <select name="convertTo" id="convertTo">
-                <option value="g">gram</option>
-                <option value="mg">Milligram</option>
-                <option value="kg">Kilogram</option>
-                <option value="ounce">Ounce</option>
-                <option value="pound">Pound</option>
+                <option value="kelvin">Kelvin</option>
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="celcius">Celcius</option>
             </select>
             <br>
             <br>

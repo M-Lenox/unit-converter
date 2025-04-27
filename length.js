@@ -26,6 +26,7 @@ const port = 3000;
 
 const filePathLength = path.join(__dirname, "length.html");
 const filePathWeight = path.join(__dirname, "weight.html");
+const filePathTemperature = path.join(__dirname, "temperature.html");
 
 // Parse URL-encoded form data
 app.use(express.urlencoded({ extended: true }));
@@ -36,6 +37,10 @@ app.get("/convert-length", (req, res) => {
 
 app.get("/convert-weight", (req, res) => {
   res.sendFile(filePathWeight);
+});
+
+app.get("/convert-temperature", (req, res) => {
+  res.sendFile(filePathTemperature);
 });
 
 app.post("/convert-length", (req, res) => {
@@ -370,6 +375,63 @@ app.post("/convert-weight", (req, res) => {
     `<h3>Results of your calculation</h3>
     <h3>${numericWeight} ${convertFrom} = ${convertedValue} ${convertTo}</h3>
     <button><a href="./convert-weight">Reset</a></button>`
+  );
+});
+
+app.post("/convert-temperature", (req, res) => {
+  const { temperature, convertFrom, convertTo } = req.body;
+  const numericTemperature = parseFloat(temperature);
+  let convertedValue;
+
+  switch (convertFrom) {
+    case "fahrenheit":
+      switch (convertTo) {
+        case "kelvin":
+          convertedValue = (numericTemperature - 459.76) * 1.8;
+          break;
+        case "celcius":
+          convertedValue = (numericTemperature - 32) * (5 / 9);
+          break;
+        default:
+          console.log("Convert from and Convert to, cannot be the same");
+      }
+      break;
+    case "kelvin":
+      switch (convertTo) {
+        case "fahrenheit":
+          convertedValue = numericTemperature * 1.8 + 459.67;
+          break;
+        case "celcius":
+          convertedValue = numericTemperature - 273.15;
+          break;
+        default:
+          console.log("Convert from and Convert to, cannot be the same");
+      }
+      break;
+    case "celcius":
+      switch (convertTo) {
+        case "fahrenheit":
+          convertedValue = numericTemperature * 1.8 + 32;
+          break;
+        case "kelvin":
+          convertedValue = numericTemperature + 273.15;
+          break;
+        case "ounce":
+          convertedValue = numericTemperature * kg.ounce;
+          break;
+        case "pound":
+          convertedValue = numericTemperature * kg.pound;
+          break;
+        default:
+          console.log("Convert from and Convert to, cannot be the same");
+      }
+      break;
+  }
+
+  res.send(
+    `<h3>Results of your calculation</h3>
+    <h3>${numericTemperature} ${convertFrom} = ${convertedValue} ${convertTo}</h3>
+    <button><a href="./convert-temperature">Reset</a></button>`
   );
 });
 
