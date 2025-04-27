@@ -20,6 +20,8 @@ A simple Node.js + Express web application that allows users to convert between 
 
 - HTML
 
+- ejs
+
 ## How It Works ⚙️
 
 1. User enters a value and selects units to convert on a simple form.
@@ -27,6 +29,14 @@ A simple Node.js + Express web application that allows users to convert between 
 2. The form submits to the same page (target="\_self").
 
 3. The server catches the POST request, calculates the conversion, and sends back a new HTML response with the result.
+
+## Screenshots
+
+![screenshot 1](./example-1.png)
+
+---
+
+![screenshot 2](./example-2.png)
 
 ## Getting Started 🚀
 

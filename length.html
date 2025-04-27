@@ -1,58 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit Converter</title>
-</head>
-<body>
-    <header>
-        <h1>Unit Converter</h1>
-        <nav>
-            <a href="/convert-length">  Length  </a>
-            <a href="/convert-weight">  Weight  </a>
-            <a href="/convert-temperature">  Temperature  </a>
-        </nav>
-    </header>
-    <main>
-        <br>
-        <form action="/convert-length" method="POST">
-            <label for="length">Enter the length to convert: </label>
-            <input type="text" id="length" name="length" autocomplete="off" required>
-            <br>
-            <br>
-            
-            <label for="convertFrom"> Unit to Convert from: </label>
-            <!-- <input type="text" name="convertFrom" id="convertFrom" autocomplete="off"> -->
-            <select name="convertFrom" id="convertFrom">
-                <option value="mm">Millimeter</option>
-                <option value="cm">Centimeter</option>
-                <option value="m">Meter</option>
-                <option value="km">Kilometer</option>
-                <option value="ft">Feet</option>
-                <option value="inch">Inch</option>
-                <option value="mile">Mile</option>
-                <option value="yard">Yard</option>
-            </select>
-            <br>
-            <br>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter</title>
+  
+  <!-- Comic Neue font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
 
-            <label for="convertTo">Unit to Convert to: </label>
-            <select name="convertTo" id="convertTo">
-                <option value="cm">Centimeter</option>
-                <option value="mm">Millimeter</option>
-                <option value="m">Meter</option>
-                <option value="km">Kilometer</option>
-                <option value="ft">Feet</option>
-                <option value="inch">Inch</option>
-                <option value="mile">Mile</option>
-                <option value="yard">Yard</option>
-            </select>
-            <br>
-            <br>
-            <button type="submit">Convert</button>
-        </form>
-    </main>
-    
+    header {
+      background-color: #ffffff;
+      padding: 15px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .title {
+      color: #4CAF50;
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #e0e0e0;
+    }
+
+    .active {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .label {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .input, .select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="title">Unit Converter</h1>
+    <nav class="nav">
+      <a href="/convert-length" class="nav-link active">Length</a>
+      <a href="/convert-weight" class="nav-link">Weight</a>
+      <a href="/convert-temperature" class="nav-link">Temperature</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <form action="/convert-length" method="POST" class="form">
+        <label for="length" class="label">Enter the length to convert:</label>
+        <input type="text" id="length" name="length" autocomplete="off" required class="input">
+
+        <label for="convertFrom" class="label">Unit to Convert from:</label>
+        <select name="convertFrom" id="convertFrom" class="select">
+          <option value="mm">Millimeter</option>
+          <option value="cm">Centimeter</option>
+          <option value="m">Meter</option>
+          <option value="km">Kilometer</option>
+          <option value="ft">Feet</option>
+          <option value="inch">Inch</option>
+          <option value="mile">Mile</option>
+          <option value="yard">Yard</option>
+        </select>
+
+        <label for="convertTo" class="label">Unit to Convert to:</label>
+        <select name="convertTo" id="convertTo" class="select">
+          <option value="cm">Centimeter</option>
+          <option value="mm">Millimeter</option>
+          <option value="m">Meter</option>
+          <option value="km">Kilometer</option>
+          <option value="ft">Feet</option>
+          <option value="inch">Inch</option>
+          <option value="mile">Mile</option>
+          <option value="yard">Yard</option>
+        </select>
+
+        <button type="submit" class="button">Convert</button>
+      </form>
+    </div>
+  </main>
 </body>
 </html>

@@ -31,6 +31,9 @@ const filePathTemperature = path.join(__dirname, "temperature.html");
 // Parse URL-encoded form data
 app.use(express.urlencoded({ extended: true }));
 
+//set view engine
+app.set("view engine", "ejs");
+
 app.get("/convert-length", (req, res) => {
   res.sendFile(filePathLength);
 });
@@ -47,6 +50,7 @@ app.get("/convert-temperature", (req, res) => {
 app.post("/convert-length", (req, res) => {
   const { length, convertFrom, convertTo } = req.body;
   const numericLength = parseFloat(length);
+  const numToConvert = numericLength;
   let convertedValue;
 
   switch (convertFrom) {
@@ -267,24 +271,28 @@ app.post("/convert-length", (req, res) => {
       break;
   }
 
-  res.send(
-    `<h3>Results of your calculation</h3>
-    <h3>${numericLength} ${convertFrom} = ${convertedValue} ${convertTo}</h3>
-    <button><a href="./convert-length">Reset</a></button>`
-  );
+  const page = "length";
+  res.render("result", {
+    numToConvert,
+    convertFrom,
+    convertedValue,
+    convertTo,
+    page,
+  });
 });
 
 //post route for weight
 app.post("/convert-weight", (req, res) => {
   const { weight, convertFrom, convertTo } = req.body;
   const numericWeight = parseFloat(weight);
+  const numToConvert = numericWeight;
   let convertedValue;
 
   switch (convertFrom) {
     case "mg":
       switch (convertTo) {
         case "g":
-          convertedValue = numericWeight * mm.g;
+          convertedValue = numericWeight * mg.g;
           break;
         case "kg":
           convertedValue = numericWeight * mg.kg;
@@ -373,17 +381,21 @@ app.post("/convert-weight", (req, res) => {
       break;
   }
 
-  res.send(
-    `<h3>Results of your calculation</h3>
-    <h3>${numericWeight} ${convertFrom} = ${convertedValue} ${convertTo}</h3>
-    <button><a href="./convert-weight">Reset</a></button>`
-  );
+  const page = "weight";
+  res.render("result", {
+    numToConvert,
+    convertFrom,
+    convertedValue,
+    convertTo,
+    page,
+  });
 });
 
 //post route for temperature
 app.post("/convert-temperature", (req, res) => {
   const { temperature, convertFrom, convertTo } = req.body;
   const numericTemperature = parseFloat(temperature);
+  const numToConvert = numericTemperature;
   let convertedValue;
 
   switch (convertFrom) {
@@ -431,11 +443,14 @@ app.post("/convert-temperature", (req, res) => {
       break;
   }
 
-  res.send(
-    `<h3>Results of your calculation</h3>
-    <h3>${numericTemperature} ${convertFrom} = ${convertedValue} ${convertTo}</h3>
-    <button><a href="./convert-temperature">Reset</a></button>`
-  );
+  const page = "temperature";
+  res.render("result", {
+    numToConvert,
+    convertFrom,
+    convertedValue,
+    convertTo,
+    page,
+  });
 });
 
 app.listen(port, () => {

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversion Result</title>
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 320px;
+    }
+    .card h3 {
+      margin: 10px 0;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h3>Results of your calculation</h3>
+    <h3><%= numToConvert %> <%= convertFrom %> = <%= convertedValue %> <%= convertTo %></h3>
+    <a href="./convert-<%=page%>" class="btn">Reset</a>
+  </div>
+</body>
+</html>
